@@ -1,6 +1,6 @@
 # 🌊 Ocean Hyprland Rice
 
-![Rice Screenshot](screenshot.png)
+![Rice Screenshot](example.png)
 
 > *A stormy sea themed Hyprland rice with heavy blur effects and marine color palette*
 
