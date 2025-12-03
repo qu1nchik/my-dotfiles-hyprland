@@ -11,18 +11,27 @@
 ### 🎨 **Visual Style**
 - **Color Scheme**: Deep ocean blues with turquoise accents and foam highlights
 - **Blur Effects**: Heavy glass-like blur for immersive experience
-- **Animations**: Smooth transitions and workspace animations
 - **Cursor**: Bibata Modern Ice with animations
 - **Icons**: Papirus Dark theme
 
 ### 🛠️ **Components**
 - **Window Manager**: Hyprland with custom animations
 - **Status Bar**: Waybar with marine-themed modules
-- **Terminal**: Kitty with Catppuccin theme
+- **Terminal**: Kitty with Nerd Font
 - **Launcher**: Wofi with transparency and blur
 - **File Manager**: yazi (terminal-based)
 - **Audio Visualizer**: Cava with wave colors
 - **Fetch Tool**: Neofetch with custom ASCII art
+### Waybar
+![Waybar](waybar.png)
+
+a cool waybar from https://github.com/Zilero232/arch-install-kit
+but with the colors in the stormy style
+
+### Wofi
+![Wofi](wofi.png)
+
+Made it transparent with blur and marine colors.
 
 ## 🚀 Installation
 
