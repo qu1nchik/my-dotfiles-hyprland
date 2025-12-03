@@ -1,0 +1,13 @@
+*.log
+*.tmp
+*.swp
+*~
+.cache/
+__pycache__/
+.DS_Store
+hypr/hyprland.log
+waybar/waybar.log
+kitty/kitty.log
+nvim/undo/
+nvim/backup/
+nvim/swap/
