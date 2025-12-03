@@ -1,0 +1,68 @@
+window {
+    margin: 0px;
+    border: 2px solid #89b4fa;
+    border-radius: 16px;
+    background-color: rgba(30, 30, 46, 0.85); /* прозрачность */
+    backdrop-filter: blur(12px); /* блюр фона */
+    font-family: "JetBrains Mono Nerd Font";
+    font-size: 14px;
+}
+
+#input {
+    margin: 15px;
+    padding: 8px 12px;
+    border: 1px solid rgba(136, 180, 250, 0.3);
+    border-radius: 10px;
+    background-color: rgba(17, 17, 27, 0.7);
+    color: #cdd6f4;
+    font-size: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#inner-box {
+    margin: 8px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 8px;
+    padding: 8px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 6px 8px;
+    border: none;
+    color: #cdd6f4;
+    font-size: 15px;
+}
+
+#entry {
+    padding: 8px 12px;
+    border-radius: 8px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+#entry:selected {
+    background: linear-gradient(135deg, #89b4fa, #74c7ec);
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(137, 180, 250, 0.3);
+}
+
+#text:selected {
+    color: #1e1e2e;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+#input image, #entry image {
+    margin: 0px 8px 0px 0px;
+}

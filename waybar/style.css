@@ -1,0 +1,402 @@
+/* =============================================================================
+*
+* Waybar configuration - Modern Style (Simplified)
+*
+* Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+*
+* =========================================================================== */
+
+@import 'themes/kanagawa.css';
+
+/* -----------------------------------------------------------------------------
+* Base styles
+* -------------------------------------------------------------------------- */
+
+* {
+	border: none;
+	border-radius: 0;
+	font-family: 'JetBrains Mono', 'Hack Nerd Font', 'UbuntuMono', monospace;
+	font-size: 14px;
+	font-weight: 600;
+	min-height: 0;
+	padding: 0;
+	margin: 0;
+}
+
+window#waybar {
+	background: rgba(15, 23, 42, 0.3); /* ТЁМНО-СИНИЙ фон */
+  border-bottom: 1px solid rgba(30, 64, 175, 0.3); /* ТЁМНО-СИНИЙ бордер */
+}
+
+/* -----------------------------------------------------------------------------
+* Tooltips
+* -------------------------------------------------------------------------- */
+
+tooltip {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #e2e8f0; /* СВЕТЛЫЙ текст */
+	border: 1px solid #334155;
+	border-radius: 8px;
+	padding: 8px 12px;
+}
+
+tooltip label {
+	color: #e2e8f0;
+	font-size: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Workspaces
+* -------------------------------------------------------------------------- */
+
+#workspaces {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	padding: 4px;
+	margin: 6px 2px;
+	border-radius: 12px;
+	border: 2px solid #334155; /* ТЁМНО-СЕРЫЙ бордер */
+}
+
+#workspaces button {
+	padding: 6px 10px;
+	margin: 0 2px;
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #94a3b8; /* СЕРЫЙ текст */
+	border-radius: 8px;
+	font-weight: bold;
+	border: 1px solid #334155; /* ТЁМНО-СЕРЫЙ бордер */
+}
+
+#workspaces button:hover {
+	background: #334155; /* НЕМНОГО СВЕТЛЕЕ при наведении */
+	color: #38bdf8; /* ГОЛУБОЙ текст */
+	border-color: #3b82f6; /* СИНИЙ бордер */
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+	background: #3b82f6; /* СИНИЙ активный */
+	color: #f8fafc; /* БЕЛЫЙ текст */
+	font-weight: bold;
+	opacity: 1;
+	border-color: #0ea5e9; /* БИРЮЗОВЫЙ бордер */
+}
+
+#workspaces button.empty {
+	opacity: 0.3;
+	background: #0f172a; /* ОЧЕНЬ ТЁМНЫЙ */
+}
+
+#workspaces button.urgent {
+	background: #1e40af; /* ТЁМНО-СИНИЙ */
+	color: #f8fafc;
+	border-color: #1d4ed8;
+}
+
+/* -----------------------------------------------------------------------------
+* Window title
+* -------------------------------------------------------------------------- */
+
+#window {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #e2e8f0; /* СВЕТЛЫЙ текст */
+	padding: 8px 16px;
+	border-radius: 12px;
+	border: 1px solid #334155; /* ТЁМНО-СЕРЫЙ бордер */
+	font-weight: 500;
+}
+
+/* -----------------------------------------------------------------------------
+* Clock
+* -------------------------------------------------------------------------- */
+
+#clock {
+	background: #38bdf8; /* ПЕСОЧНЫЙ (акцент) */
+	color: #0f172a; /* ТЁМНЫЙ текст */
+	font-weight: bold;
+	margin: 6px 2px 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+	font-size: 15px;
+}
+
+/* -----------------------------------------------------------------------------
+* System monitoring modules
+* -------------------------------------------------------------------------- */
+
+#memory {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #0ea5e9; /* БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #0ea5e9; /* БИРЮЗОВЫЙ бордер */
+	border-radius: 12px 0 0 12px;
+	margin: 6px 0;
+	padding: 8px 12px;
+}
+
+#cpu {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #38bdf8; /* ГОЛУБОЙ текст */
+	border-left: 4px solid #38bdf8; /* ГОЛУБОЙ бордер */
+	margin: 6px 0px 6px 0;
+	padding: 8px 12px;
+}
+
+#temperature {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #10b981; /* ЗЕЛЁНО-БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #10b981; /* ЗЕЛЁНО-БИРЮЗОВЫЙ бордер */
+	border-radius: 0 12px 12px 0;
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+}
+
+#temperature.critical {
+	background: #dc2626; /* КРАСНЫЙ (коралл) */
+	color: #f8fafc;
+	border-left: 4px solid #b91c1c;
+}
+
+/* -----------------------------------------------------------------------------
+* Battery
+* -------------------------------------------------------------------------- */
+
+#battery {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #06d6a0; /* ЯРКИЙ БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #06d6a0; /* ЯРКИЙ БИРЮЗОВЫЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#battery.charging {
+	color: #0ea5e9; /* БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #0ea5e9; /* БИРЮЗОВЫЙ бордер */
+}
+
+#battery.warning {
+	background: #1d4ed8; /* СИНИЙ */
+	color: #f8fafc;
+	border-left: 4px solid #3b82f6;
+}
+
+#battery.critical:not(.charging) {
+	background: #b91c1c; /* ТЁМНО-КРАСНЫЙ */
+	color: #f8fafc;
+	border-left: 4px solid #991b1b;
+}
+
+/* -----------------------------------------------------------------------------
+* Audio and Backlight
+* -------------------------------------------------------------------------- */
+
+#backlight {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #0ea5e9; /* БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #0ea5e9; /* БИРЮЗОВЫЙ бордер */
+	border-radius: 12px 0 0 12px;
+	margin: 6px 0 6px 2px;
+	padding: 8px 12px;
+}
+
+#pulseaudio {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #2d6bc4; /* ВОЛНОВОЙ СИНИЙ текст */
+	border-left: 4px solid #2d6bc4; /* ВОЛНОВОЙ СИНИЙ бордер */
+	border-radius: 0 12px 12px 0;
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+}
+
+#pulseaudio.muted {
+	color: #64748b; /* СЕРЫЙ */
+	border-left: 4px solid #64748b;
+}
+
+/* -----------------------------------------------------------------------------
+* Network
+* -------------------------------------------------------------------------- */
+
+#network {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #38bdf8; /* ГОЛУБОЙ текст */
+	border-left: 4px solid #38bdf8; /* ГОЛУБОЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#network.disconnected {
+	color: #1e40af; /* ТЁМНО-СИНИЙ */
+	border-left: 4px solid #1e40af;
+}
+
+#network.disabled {
+	color: #64748b; /* СЕРЫЙ */
+	border-left: 4px solid #64748b;
+}
+
+/* -----------------------------------------------------------------------------
+* Language
+* -------------------------------------------------------------------------- */
+
+#language {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #38bdf8; /* ГОЛУБОЙ текст */
+	border-left: 4px solid #38bdf8; /* ГОЛУБОЙ бордер */
+	margin: 6px 0 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px 0 0 12px;
+}
+
+#keyboard-state {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #38bdf8; /* ГОЛУБОЙ текст */
+	border-left: 4px solid #38bdf8; /* ГОЛУБОЙ бордер */
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+	border-radius: 0 12px 12px 0;
+}
+
+/* -----------------------------------------------------------------------------
+* Custom modules
+* -------------------------------------------------------------------------- */
+
+#custom-launcher {
+	background: #0ea5e9; /* БИРЮЗОВЫЙ фон */
+	color: #1e293b; /* ТЁМНЫЙ текст */
+	font-size: 16px;
+	font-weight: bold;
+	margin: 6px 2px 6px 8px;
+	padding: 8px 14px 8px 10px;
+	border-radius: 12px;
+	border: 2px solid #38bdf8; /* ГОЛУБОЙ бордер */
+}
+
+#custom-weather {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #2d6bc4; /* ВОЛНОВОЙ СИНИЙ текст */
+	border-left: 4px solid #2d6bc4; /* ВОЛНОВОЙ СИНИЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-updates {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #0ea5e9; /* БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #0ea5e9; /* БИРЮЗОВЫЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-updates.has-updates {
+	background: #1d4ed8; /* СИНИЙ */
+	color: #f8fafc;
+	border-left: 4px solid #3b82f6;
+}
+
+#custom-vpn {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #06b6d4; /* БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #06b6d4; /* БИРЮЗОВЫЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-vpn.connected {
+	color: #22d3ee; /* ЦИАНОВЫЙ */
+	border-left: 4px solid #22d3ee;
+}
+
+#custom-notification {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #38bdf8; /* ГОЛУБОЙ текст */
+	border-left: 4px solid #38bdf8; /* ГОЛУБОЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-cava {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #303A80; /* ЯРКИЙ БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #2E356E; /* ЯРКИЙ БИРЮЗОВЫЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Tray
+* -------------------------------------------------------------------------- */
+
+#tray {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	padding: 6px 10px;
+	margin: 6px 8px 6px 2px;
+	border-radius: 12px;
+	border: 1px solid #334155; /* ТЁМНО-СЕРЫЙ бордер */
+}
+
+#tray > .passive {
+	opacity: 0.7;
+}
+
+#tray > .needs-attention {
+	background-color: #1e40af; /* ТЁМНО-СИНИЙ */
+	border-radius: 6px;
+	color: #f8fafc;
+}
+
+/* -----------------------------------------------------------------------------
+* Idle inhibitor
+* -------------------------------------------------------------------------- */
+
+#idle_inhibitor {
+	background: #1e293b; /* ТЁМНЫЙ фон */
+	color: #0ea5e9; /* БИРЮЗОВЫЙ текст */
+	border-left: 4px solid #0ea5e9; /* БИРЮЗОВЫЙ бордер */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#idle_inhibitor.activated {
+	background: #0ea5e9; /* БИРЮЗОВЫЙ фон */
+	border-left: 4px solid #1e293b; /* ТЁМНЫЙ бордер */
+	color: #1e293b; /* ТЁМНЫЙ текст */
+}
+
+#mode {
+	background: #1d4ed8; /* СИНИЙ */
+	color: #f8fafc;
+	font-weight: bold;
+	padding: 8px 16px;
+	margin: 6px 8px;
+	border-radius: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Hover effects (осталось как в оригинале)
+* -------------------------------------------------------------------------- */
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-launcher:hover,
+#custom-notification:hover,
+#custom-weather:hover,
+#custom-updates:hover,
+#custom-vpn:hover,
+#language:hover,
+#custom-cava:hover {
+	opacity: 0.8;
+}
