@@ -11,17 +11,15 @@
 ### 🎨 **Visual Style**
 - **Color Scheme**: Deep ocean blues with turquoise accents and foam highlights
 - **Blur Effects**: Heavy glass-like blur for immersive experience
-- **Cursor**: Bibata Modern Ice with animations
 - **Icons**: Papirus Dark theme
 
 ### 🛠️ **Components**
-- **Window Manager**: Hyprland with custom animations
+- **Window Manager**: Hyprland
 - **Status Bar**: Waybar with marine-themed modules
 - **Terminal**: Kitty with Nerd Font
 - **Launcher**: Wofi with transparency and blur
-- **File Manager**: yazi (terminal-based)
 - **Audio Visualizer**: Cava with wave colors
-- **Fetch Tool**: Neofetch with custom ASCII art
+- **Fetch Tool**: Fastfetch with custom ASCII art
 ### Waybar
 ![Waybar](waybar.png)
 
