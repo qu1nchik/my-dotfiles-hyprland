@@ -249,10 +249,10 @@
 # You can define as many as 8 different colors. They range from bottom to top of screen
 gradient = 1
 gradient_count = 4
-gradient_color_1 = '#23234a'
-gradient_color_2 = '#27275c'
-gradient_color_3 = '#1e4a85'
-gradient_color_4 = '#105FC9'
+gradient_color_1 = '#9898cd'
+gradient_color_2 = '#9494d1'
+gradient_color_3 = '#4d75b3'
+gradient_color_4 = '#666699'
 # Horizontal is only supported on noncurses output.
 # Only one color will be calculated per bar.
 ; horizontal_gradient = 0
@@ -262,8 +262,6 @@ gradient_color_4 = '#105FC9'
 ; horizontal_gradient_color_4 = '#f2dde1'
 ; horizontal_gradient_color_5 = '#cbc7d8'
 ; horizontal_gradient_color_6 = '#8db7d2'
-; horizontal_gradient_color_7 = '#5e62a9'
-; horizontal_gradient_color_8 = '#434279'
 
 
 # If both vertical and horizontal gradient is enabled, vertical will be blended in this direction.

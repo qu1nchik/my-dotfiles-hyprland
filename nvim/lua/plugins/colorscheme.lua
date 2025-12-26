@@ -3,7 +3,7 @@ return {
     "catppuccin/nvim",
     name = "catppuccin",
     opts = {
-      flavour = "mocha",  -- mocha, macchiato, frappe, latte
+      flavour = "macchiato", -- mocha, macchiato, frappe, latte
       background = {
         light = "latte",
         dark = "mocha",
@@ -15,5 +15,5 @@ return {
     opts = {
       colorscheme = "catppuccin",
     },
-  }
+  },
 }
