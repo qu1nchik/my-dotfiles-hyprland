@@ -63,13 +63,13 @@ The entire setup is automated with a Python installer script for maximum conveni
 | :--- | :--- | :--- |
 | **WM / Compositor** | Hyprland (Heavy Blur) | Hyprland (Smooth) |
 | **Status Bar** | Themed Waybar | Themed Waybar |
-| **Terminal** | Kitty (Nerd Font) | Kitty |
+| **Terminal** | Kitty(Catppuccin-Macchiato) | Kitty(tokyonight-moon) |
 | **Launcher** | Wofi (Transparent/Blur) | Wofi (Dark) |
 | **Visualizer** | Cava (Frosty) | Cava (Ambient) |
 | **Fetch Tool** | Fastfetch (Custom Art) | - |
-| **Editor** | - | Neovim (Personal Setup) |
+| **Editor** | Neovim(Catppuccin-Macchiato) | Neovim (tokyonight-moon) |
 | **Icons** | Papirus Dark | - |
-
+| **Terminal Multiplexer** | Zellij(Catppuccin-Macchiato) | Zellij(tokyonight-night)
 ---
 
 ## 📁 Repository Structure
