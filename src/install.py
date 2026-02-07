@@ -5,18 +5,20 @@ from pathlib import Path
 
 PACKAGES = [
     "hyprland",
-    "hyprpaper",
     "wofi",
     "cava",
     "fastfetch",
-    "hyprpaper",
+    "wpaperd",
     "htop",
     "kitty",
     "nvim",
     "btop",
     "waybar",
-    "git",
-    "yazi"
+    "yazi",
+    "zellij",
+    "firefox",
+    "wl-clipboard",
+    "hyprshade"
 ]
 
 FONTS = [
@@ -29,15 +31,14 @@ VERSIONS = [
 ]
 
 AUR_PACKAGES = [
-    "ttf-jetbrains-mono-nerd"
+    "ttf-jetbrains-mono-nerd",
+    "wpaperd",
+    "hyprshade"
 ]
 
-def fix_mirrors():
-    #Updating mirrors
-    print("Updating mirrors...")
-    
-    subprocess.run("sudo pacman -Syu --noconfirm", shell=True)
-    
+def update_mirrors():
+    print("Updating mirrors...") 
+    subprocess.run("sudo pacman -Syu --noconfirm", shell=True) 
     print("Mirrors updated")
 
 def is_aur(pkg: str) -> bool:
@@ -46,7 +47,7 @@ def is_aur(pkg: str) -> bool:
 def install_aur():
     print("Start installing yay...")
     print("Installing Dependencies...")
-    cmd = "sudo pacman -S --needed git base-devel go"
+    cmd = "sudo pacman -S --needed git base-devel go --noconfirm"
     subprocess.run(cmd, shell=True)
 
     print("Cloning official repo...")
@@ -61,14 +62,20 @@ def install_aur():
     print("yay was Successfully installed ✔")
 
 def install_pkg():
-
     #installing packages
-    fix_mirrors()
+    update_mirrors()
+
     print("Installing Packages...")
     for pkg in PACKAGES:
-        result = subprocess.run(f"sudo pacman -S --noconfirm {pkg}", shell=True,
+        if is_aur(pkg):
+            result = subprocess.run(f"yay -S --noconfirm {pkg}", shell=True,
                                 capture_output=True,
                                 text=True)
+        else:
+            result = subprocess.run(f"sudo pacman -S --noconfirm {pkg}", shell=True,
+                                capture_output=True,
+                                text=True)
+
         if result.returncode == 0:
             print(f"{pkg} was Successfully installed!")
         else:
@@ -104,23 +111,8 @@ def install_configs():
     ver_path = home / "my-dotfiles-hyprland" / selected_ver 
     os.chdir(ver_path)
     subprocess.run("rm example.png", shell=True)
-    set_wallpaper(ver_path)
+    subprocess.run("",shell=True)
     subprocess.run(f"cp -r * {dotconf} ", shell=True)
-
-def set_wallpaper(ver_path: str):
-    print("Starting setting wallpapers...")
-    temp = Path(ver_path)
-    wallpaper_path = temp / "wallpaper.png"
-    subprocess.run("mkdir -p ~/wallpapers", shell=True)
-    subprocess.run(f"mv {wallpaper_path} ~/wallpapers ", shell=True)
-
-    wallpaper_path = Path.home() / "wallpapers" / "wallpaper.png"
-    config_path = Path.home() / ".config" / "hypr" / "hyprpaper.conf"
-    config_text = f"""preload = {wallpaper_path}
-    wallpaper = ,{wallpaper_path}
-    """
-    config_path.write_text(config_text)
-    print("Wallpapers was Successfully Installed! ")
 
 def main():
     # installing AUR
@@ -130,10 +122,8 @@ def main():
                             text=True)
     if not result.returncode == 0:
         install_aur()
-    # installing packages
-    install_pkg()
 
-    #installing configs
+    install_pkg()
     install_configs()
 
 
