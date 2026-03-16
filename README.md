@@ -32,6 +32,20 @@ Two fully-configured, atmospheric desktop setups ("rices") for the Hyprland Wayl
 *   **Audio Visualizer:** Cava with deep, ambient color waves.
 *   **Editor:** Neovim with a personalized setup and a dark color scheme.
 
+### ☀️ Summer
+![Summer Version Screenshot](Summer/example.png)
+
+> A warm and vibrant theme freshly added! Built around the beloved Gruvbox color palette, this rice brings the heat with earthy oranges, warm yellows, and soft greens. Perfect for bright, productive sessions with a cozy retro vibe.
+
+**Key Components:**
+*   **Hyprland:** Configured with the warm and distinctive Gruvbox palette throughout the compositor.
+*   **Waybar:** A stylish status bar adapted to match the Summer/Gruvbox aesthetic.
+*   **Kitty:** Terminal using the Gruvbox Material theme for a perfect color match.
+*   **Application Launcher:** Wofi styled with warm colors and subtle transparency.
+*   **Audio Visualizer:** Cava configured with warm, earthy color waves that pulse with your music.
+*   **Editor:** Neovim fully configured with the Gruvbox Material color scheme.
+
+
 ---
 
 ## 🚀 One-Click Installation
@@ -59,17 +73,17 @@ The entire setup is automated with a Python installer script for maximum conveni
 
 ## 🛠️ Technical Overview
 
-| Component | Winter Rice | Ambient Rice |
-| :--- | :--- | :--- |
-| **WM / Compositor** | Hyprland (Heavy Blur) | Hyprland (Smooth) |
-| **Status Bar** | Themed Waybar | Themed Waybar |
-| **Terminal** | Kitty(Catppuccin-Macchiato) | Kitty(tokyonight-moon) |
-| **Launcher** | Wofi (Transparent/Blur) | Wofi (Dark) |
-| **Visualizer** | Cava (Frosty) | Cava (Ambient) |
-| **Fetch Tool** | Fastfetch (Custom Art) | - |
-| **Editor** | Neovim(Catppuccin-Macchiato) | Neovim (tokyonight-moon) |
-| **Icons** | Papirus Dark | - |
-| **Terminal Multiplexer** | Zellij(Catppuccin-Macchiato) | Zellij(tokyonight-night)
+| Component | Winter Rice | Ambient Rice | Summer Rice |
+| :--- | :--- | :--- | :--- |
+| **WM / Compositor** | Hyprland (Heavy Blur) | Hyprland (Smooth) | Hyprland (Gruvbox Palette) |
+| **Status Bar** | Themed Waybar | Themed Waybar | Themed Waybar (Gruvbox) |
+| **Terminal** | Kitty(Catppuccin-Macchiato) | Kitty(tokyonight-moon) | Kitty (Gruvbox Material) |
+| **Launcher** | Wofi (Transparent/Blur) | Wofi (Dark) | Wofi (Gruvbox Style) |
+| **Visualizer** | Cava (Frosty) | Cava (Ambient) | Cava (Warm/Gruvbox) |
+| **Fetch Tool** | Fastfetch (Custom Art) | - | - |
+| **Editor** | Neovim(Catppuccin-Macchiato) | Neovim (tokyonight-moon) | Neovim (Gruvbox Material) |
+| **Icons** | Papirus Dark | - | - |
+| **Terminal Multiplexer** | Zellij(Catppuccin-Macchiato) | Zellij(tokyonight-night) | - |
 ---
 
 ## 📁 Repository Structure
@@ -77,7 +91,7 @@ The entire setup is automated with a Python installer script for maximum conveni
 ```bash
 my-dotfiles-hyprland/
 ├── src/
-│   └── install.py          # Main Python installer
+│   └── install.py          # Main Python installer (now with 3 choices!)
 ├── Winter/                 # Complete Winter rice configs
 │   ├── hypr/
 │   ├── waybar/
@@ -89,6 +103,13 @@ my-dotfiles-hyprland/
 │   ├── waybar/
 │   ├── nvim/
 │   ├── kitty/
+│   └── ... (other configs)
+├── Summer/                 # Complete Summer rice configs
+│   ├── hypr/               # Hyprland with warm orange colors
+│   ├── waybar/             # Gruvbox-styled status bar
+│   ├── kitty/              # Kitty with Gruvbox Material theme
+│   ├── nvim/               # Neovim with Gruvbox Material
+│   ├── wofi/               # Gruvbox-style launcher              
 │   └── ... (other configs)
 └── README.md
 ```
