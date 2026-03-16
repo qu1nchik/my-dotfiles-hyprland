@@ -1,0 +1,404 @@
+/* =============================================================================
+*
+* Waybar configuration - Modern Style (Simplified)
+*
+* Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+*
+* =========================================================================== */
+
+@import 'themes/kanagawa.css';
+
+/* -----------------------------------------------------------------------------
+* Base styles
+* -------------------------------------------------------------------------- */
+
+* {
+	border: none;
+	border-radius: 0;
+	font-family: 'JetBrainsMono Nerd Font', monospace;
+	font-size: 15px;
+	font-weight: 600;
+	min-height: 0;
+	padding: 0;
+	margin: 0;
+}
+
+window#waybar {
+	background: rgba(40, 40, 40, 0.3); /* bg0 с прозрачкой */
+  	border-bottom: 1px solid rgba(254, 128, 25, 0.3); /* оранжевый приглушённый */
+}
+
+/* -----------------------------------------------------------------------------
+* Tooltips
+* -------------------------------------------------------------------------- */
+
+tooltip {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border: 1px solid #504945; /* bg2 */
+	border-radius: 8px;
+	padding: 8px 12px;
+}
+
+tooltip label {
+	color: #ebdbb2;
+	font-size: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Workspaces
+* -------------------------------------------------------------------------- */
+
+#workspaces {
+	background: #3c3836; /* bg1 */
+	padding: 4px;
+	margin: 6px 2px;
+	border-radius: 12px;
+	border: 2px solid #504945; /* bg2 */
+}
+
+#workspaces button {
+	padding: 6px 10px;
+	margin: 0 2px;
+	background: #3c3836; /* bg1 */
+	color: #a89984; /* fg4 - серый */
+	border-radius: 8px;
+	font-weight: bold;
+	border: 1px solid #504945; /* bg2 */
+}
+
+#workspaces button:hover {
+	background: #504945; /* bg2 */
+	color: #fe8019; /* оранжевый */
+	border-color: #d65d0e;
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+	background: #d65d0e; /* тёмный оранжевый */
+	color: #fbf1c7; /* fg0 */
+	font-weight: bold;
+	opacity: 1;
+	border-color: #fe8019; /* оранжевый */
+}
+
+#workspaces button.empty {
+	opacity: 0.3;
+	background: #282828; /* bg0 */
+}
+
+#workspaces button.urgent {
+	background: #fabd2f; /* жёлтый */
+	color: #282828; /* bg0 */
+	border-color: #d65d0e;
+}
+
+/* -----------------------------------------------------------------------------
+* Window title
+* -------------------------------------------------------------------------- */
+
+#window {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	padding: 8px 16px;
+	border-radius: 12px;
+	border: 1px solid #504945; /* bg2 */
+	font-weight: 500;
+}
+
+/* -----------------------------------------------------------------------------
+* Clock - главный акцент
+* -------------------------------------------------------------------------- */
+
+#clock {
+	background: #fe8019; /* оранжевый */
+	color: #282828; /* bg0 */
+	font-weight: bold;
+	margin: 6px 2px 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+	font-size: 15px;
+}
+
+/* -----------------------------------------------------------------------------
+* System monitoring - нейтральные, светло-серые
+* -------------------------------------------------------------------------- */
+
+#memory {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 - светлый серый */
+	border-left: 4px solid #ebdbb2; /* fg1 */
+	border-radius: 12px 0 0 12px;
+	margin: 6px 0;
+	padding: 8px 12px;
+}
+
+#cpu {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border-left: 4px solid #ebdbb2; /* fg1 */
+	margin: 6px 0px 6px 0;
+	padding: 8px 12px;
+}
+
+#temperature {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border-left: 4px solid #ebdbb2; /* fg1 */
+	border-radius: 0 12px 12px 0;
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+}
+
+#temperature.critical {
+	background: #cc241d; /* красный */
+	color: #fbf1c7; /* fg0 */
+	border-left: 4px solid #fb4934;
+}
+
+/* -----------------------------------------------------------------------------
+* Battery - нейтральный, меняется по статусу
+* -------------------------------------------------------------------------- */
+
+#battery {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border-left: 4px solid #ebdbb2; /* fg1 */
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#battery.charging {
+	color: #b8bb26; /* зелёный - хороший статус */
+	border-left: 4px solid #b8bb26;
+}
+
+#battery.warning {
+	color: #fabd2f; /* жёлтый - внимание */
+	border-left: 4px solid #fabd2f;
+}
+
+#battery.critical:not(.charging) {
+	background: #cc241d; /* красный */
+	color: #fbf1c7;
+	border-left: 4px solid #fb4934;
+}
+
+/* -----------------------------------------------------------------------------
+* Backlight - нейтральный
+* -------------------------------------------------------------------------- */
+
+#backlight {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border-left: 4px solid #ebdbb2; /* fg1 */
+	border-radius: 12px 0 0 12px;
+	margin: 6px 0 6px 2px;
+	padding: 8px 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Pulseaudio - медиа, чуть ярче
+* -------------------------------------------------------------------------- */
+
+#pulseaudio {
+	background: #3c3836; /* bg1 */
+	color: #fbf1c7; /* fg0 - ярче, почти белый */
+	border-left: 4px solid #fbf1c7;
+	border-radius: 0 12px 12px 0;
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+}
+
+#pulseaudio.muted {
+	color: #7c6f64; /* тёмно-серый */
+	border-left: 4px solid #7c6f64;
+}
+
+/* -----------------------------------------------------------------------------
+* Network - средний серый
+* -------------------------------------------------------------------------- */
+
+#network {
+	background: #3c3836; /* bg1 */
+	color: #d5c4a1; /* fg2 - средний серый */
+	border-left: 4px solid #d5c4a1;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#network.disconnected {
+	color: #fabd2f; /* жёлтый */
+	border-left: 4px solid #fabd2f;
+}
+
+#network.disabled {
+	color: #7c6f64; /* тёмно-серый */
+	border-left: 4px solid #7c6f64;
+}
+
+/* -----------------------------------------------------------------------------
+* Language - средний серый
+* -------------------------------------------------------------------------- */
+
+#language {
+	background: #3c3836; /* bg1 */
+	color: #d5c4a1; /* fg2 */
+	border-left: 4px solid #d5c4a1;
+	margin: 6px 0 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px 0 0 12px;
+}
+
+#keyboard-state {
+	background: #3c3836; /* bg1 */
+	color: #d5c4a1; /* fg2 */
+	border-left: 4px solid #d5c4a1;
+	margin: 6px 2px 6px 0;
+	padding: 8px 12px;
+	border-radius: 0 12px 12px 0;
+}
+
+/* -----------------------------------------------------------------------------
+* Custom modules
+* -------------------------------------------------------------------------- */
+
+#custom-launcher {
+	background: #fe8019; /* оранжевый */
+	color: #282828; /* bg0 */
+	font-size: 16px;
+	font-weight: bold;
+	margin: 6px 2px 6px 8px;
+	padding: 8px 14px 8px 10px;
+	border-radius: 12px;
+	border: 2px solid #d65d0e; /* тёмный оранжевый */
+}
+
+#custom-weather {
+	background: #3c3836; /* bg1 */
+	color: #fbf1c7; /* fg0 - яркий, как медиа */
+	border-left: 4px solid #fbf1c7;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-updates {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 - светлый серый */
+	border-left: 4px solid #ebdbb2;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-updates.has-updates {
+	color: #fabd2f; /* жёлтый */
+	border-left: 4px solid #fabd2f;
+}
+
+#custom-vpn {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border-left: 4px solid #ebdbb2;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-vpn.connected {
+	color: #b8bb26; /* зелёный - хорошо */
+	border-left: 4px solid #b8bb26;
+}
+
+#custom-notification {
+	background: #3c3836; /* bg1 */
+	color: #d5c4a1; /* fg2 - средний серый */
+	border-left: 4px solid #d5c4a1;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#custom-cava {
+	background: #3c3836; /* bg1 */
+	color: #fbf1c7; /* fg0 - яркий, почти белый */
+	border-left: 4px solid #fbf1c7;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Tray
+* -------------------------------------------------------------------------- */
+
+#tray {
+	background: #3c3836; /* bg1 */
+	padding: 6px 10px;
+	margin: 6px 8px 6px 2px;
+	border-radius: 12px;
+	border: 1px solid #504945; /* bg2 */
+}
+
+#tray > .passive {
+	opacity: 0.7;
+}
+
+#tray > .needs-attention {
+	background-color: #fabd2f; /* жёлтый */
+	border-radius: 6px;
+	color: #282828; /* bg0 */
+}
+
+/* -----------------------------------------------------------------------------
+* Idle inhibitor - нейтральный
+* -------------------------------------------------------------------------- */
+
+#idle_inhibitor {
+	background: #3c3836; /* bg1 */
+	color: #ebdbb2; /* fg1 */
+	border-left: 4px solid #ebdbb2;
+	margin: 6px 2px;
+	padding: 8px 12px;
+	border-radius: 12px;
+}
+
+#idle_inhibitor.activated {
+	background: #fe8019; /* оранжевый */
+	border-left: 4px solid #3c3836; /* bg1 */
+	color: #282828; /* bg0 */
+}
+
+#mode {
+	background: #d65d0e; /* тёмный оранжевый */
+	color: #fbf1c7; /* fg0 */
+	font-weight: bold;
+	padding: 8px 16px;
+	margin: 6px 8px;
+	border-radius: 12px;
+}
+
+/* -----------------------------------------------------------------------------
+* Hover effects
+* -------------------------------------------------------------------------- */
+
+#clock:hover,
+#battery:hover,
+#cpu:hover,
+#memory:hover,
+#temperature:hover,
+#backlight:hover,
+#network:hover,
+#pulseaudio:hover,
+#custom-launcher:hover,
+#custom-notification:hover,
+#custom-weather:hover,
+#custom-updates:hover,
+#custom-vpn:hover,
+#language:hover,
+#custom-cava:hover {
+	opacity: 0.8;
+}

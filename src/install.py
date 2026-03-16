@@ -27,7 +27,8 @@ FONTS = [
 
 VERSIONS = [
     "Winter",
-    "Ambient"
+    "Ambient",
+    "Summer"
 ]
 
 AUR_PACKAGES = [

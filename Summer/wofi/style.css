@@ -1,0 +1,147 @@
+/* 
+ * Импорт цветовой схемы из pywal
+ * wofi использует немного другую структуру чем rofi
+ */
+@import url('/home/eli/.cache/wal/colors-waybar.css');
+
+/* 
+ * Цветовые переменные для wofi
+ * Основываясь на зимней теме: белый, серый, фиолетовый/синий
+ */
+@define-color mauve  @color9;     /* Акцентный цвет - фиолетово-синий */
+@define-color red    @color1;     /* Красный для иконок/предупреждений */
+@define-color lavender @color7;   /* Основной текст - светло-серый/белый */
+@define-color text   @color7;     /* Текст */
+@define-color background @color0; /* Фоновый цвет */
+
+/* Анимация (оставляем как есть) */
+@keyframes fadeIn {
+    0% {
+    }
+    100% {
+    }
+}
+
+/* 
+ * ВАЖНО: wofi чувствителен к структуре классов
+ * Не меняем селекторы, только цвета внутри них
+ */
+
+* {
+    all: unset;
+    font-family: 'JetBrainsMono Nerd Font', JetBrainsMono;
+    font-size: 18px;
+    outline: none;
+    border: none;
+    text-shadow: none;
+    background-color: transparent;
+}
+
+/* Окно wofi - делаем не полностью прозрачным */
+#window {
+    padding: 20px;
+    border-radius: 0px;
+    /* Изменено: было alpha(@background,.5) */
+    /* Теперь: 80% непрозрачности, можно менять от 0.4 до 1.0 */
+    background-color: alpha(@background, 0.8);
+    /* Добавляем тонкую рамку для четкости */
+    border: 2px solid alpha(@lavender, 0.1);
+    border-color:#175480
+}
+
+#inner-box {
+    margin: 2px;
+    padding: 5px;
+    border: none;
+}
+
+#outer-box {    
+    border: none;
+}
+
+#scroll {
+    margin: 0px;
+    padding: 30px;
+    border: none;
+}
+
+/* Поле ввода */
+#input {
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    color: #175480;
+    /* Изменено: был alpha(@background,.2) */
+    /* Теперь: более видимый фон */
+    background-color: alpha(@background, 0.3);
+    box-shadow: 1px 1px 5px rgba(0,0,0, .5);
+    border-radius: 10px;
+    /* Добавляем рамку */
+    border: 1px solid alpha(@text, 0.1);
+}
+
+#input image {
+    /* Исправляем цвет иконки - был @red, делаем акцентным */
+    color: @mauve;
+    padding-right: 10px;
+}
+
+#input * {
+    border: none;
+    outline: none;
+}
+
+#input:focus {
+    /* Делаем фокус более заметным */
+    border: 1px solid alpha(@mauve, 0.5);
+    background-color: alpha(@background, 0.4);
+}
+
+/* Текст элементов */
+#text {
+    margin: 5px;
+    color: @text;
+}
+
+/* Контейнеры элементов - исправляем прозрачность */
+#entry {
+    border: none;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+    /* Добавляем прозрачный фон для всех элементов */
+    background-color: transparent;
+}
+
+/* Эффект при наведении на элемент */
+#entry:hover {
+    background-color: alpha(@background, 0.1);
+}
+
+#entry arrow {
+    /* Стрелки - делаем их видимыми */
+    color: alpha(@lavender, 0.8);
+}
+
+/* Выбранный элемент */
+#entry:selected {
+    box-shadow: 1px 1px 5px rgba(255,255,255, .1);
+    border: none;
+    border-radius: 10px; /* Уменьшаем скругление для wofi */
+    /* ВАЖНО: был transparent, делаем полупрозрачный фон */
+    background-color: alpha(@mauve, 0.15);
+    /* Добавляем рамку для выделения */
+    border: 1px solid alpha(@mauve, 0.3);
+}
+
+/* Текст в выбранном элементе */
+#entry:selected #text {
+    color: @mauve;
+    font-weight: bold; /* Делаем жирным для выделения */
+}
+
+/* Элемент при перетаскивании */
+#entry:drop(active) {
+    background-color: alpha(@mauve, 0.3) !important;
+}
