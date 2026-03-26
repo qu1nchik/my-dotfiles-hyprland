@@ -102,18 +102,25 @@ def install_pkg():
                 print(f"{font} was Successfully installed!")
 
 def install_configs():
+    user = os.getlogin()
+
     print("Which version of dotfiles do you want to install???") 
     for i, ver in enumerate(VERSIONS):
         print(f"{i + 1}):{ver}")
+
     conf = int(input("Enter Number: "))
     home = Path.home()
     dotconf = home / ".config"
     selected_ver = VERSIONS[conf - 1]
     ver_path = home / "my-dotfiles-hyprland" / selected_ver 
+
     os.chdir(ver_path)
     subprocess.run("rm example.png", shell=True)
     subprocess.run("",shell=True)
     subprocess.run(f"cp -r * {dotconf} ", shell=True)
+
+    subprocess.run(f"sudo chown -R {user}:{user} {dotconf}", shell=True)
+    print("Configs Was Successfully Installed!")
 
 def main():
     # installing AUR
