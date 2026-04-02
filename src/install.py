@@ -101,6 +101,8 @@ def install_pkg():
             if result.returncode == 0:
                 print(f"{font} was Successfully installed!")
 
+def install_zsh():
+    
 def install_configs():
     user = os.getlogin()
 
@@ -121,6 +123,15 @@ def install_configs():
 
     subprocess.run(f"sudo chown -R {user}:{user} {dotconf}", shell=True)
     print("Configs Was Successfully Installed!")
+def install_zsh():
+    subprocess.run("cd ~/")
+    subprocess.run("sudo pacman -S --noconfirm zsh")
+    subprocess.run("chsh -s $(which zsh)")
+    omz_cmd ="""
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+    """
+    subprocess.run(omz_cmd)
+    print("Now confirm installation of yours zsh with ohmyzsh menu!")
 
 def main():
     # installing AUR
@@ -133,7 +144,10 @@ def main():
 
     install_pkg()
     install_configs()
-
+    zsh_answer = input("Do you want to install zsh with ohmyzsh?")
+    is_needed_zsh = True if "y" in zsh_answer else False
+    if (is_needed_zsh):
+        install_zsh()
 
 if __name__ == "__main__":
     main()
