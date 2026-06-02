@@ -100,9 +100,6 @@ def install_pkg():
                                     text=True)
             if result.returncode == 0:
                 print(f"{font} was Successfully installed!")
-
-def install_zsh():
-    
 def install_configs():
     user = os.getlogin()
 
