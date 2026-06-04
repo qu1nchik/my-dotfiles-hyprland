@@ -62,6 +62,14 @@ def install_aur():
     subprocess.run("rm -rf /tmp/yay", shell=True)
     print("yay was Successfully installed ✔")
 
+def set_wallpapers(path: str):
+    r = input("Do you want to set the default wallpaper for this theme?")
+    if "n" in r.lower():
+        return
+
+    subprocess.run("mkdir -p ~/wallpapers")
+    subprocess.run("cp wallpaper.png ~/wallpapers")
+
 def install_pkg():
     #installing packages
     update_mirrors()
@@ -100,7 +108,8 @@ def install_pkg():
                                     text=True)
             if result.returncode == 0:
                 print(f"{font} was Successfully installed!")
-def install_configs():
+
+def load_configs():
     user = os.getlogin()
 
     print("Which version of dotfiles do you want to install???") 
@@ -111,15 +120,18 @@ def install_configs():
     home = Path.home()
     dotconf = home / ".config"
     selected_ver = VERSIONS[conf - 1]
-    ver_path = home / "my-dotfiles-hyprland" / selected_ver 
+    ver_path = home / "my-dotfiles-hyprland" / selected_ver
+
 
     os.chdir(ver_path)
     subprocess.run("rm example.png", shell=True)
-    subprocess.run("",shell=True)
+    set_wallpapers()
+    subprocess.run("rm wallpaper.png", shell=True)
     subprocess.run(f"cp -r * {dotconf} ", shell=True)
 
     subprocess.run(f"sudo chown -R {user}:{user} {dotconf}", shell=True)
     print("Configs Was Successfully Installed!")
+
 def install_zsh():
     subprocess.run("cd ~/")
     subprocess.run("sudo pacman -S --noconfirm zsh")
@@ -131,6 +143,39 @@ def install_zsh():
     print("Now confirm installation of yours zsh with ohmyzsh menu!")
 
 def main():
+    # if the user attempted to run the script as root
+    if os.getlogin == "root":
+        print("""
+        +--------------------------------------------------------------------+
+        |                              ERROR                                 |
+        +--------------------------------------------------------------------+
+        |  This script should NOT be run as root. Running as root may break  |
+        |  your user configuration, change file permissions incorrectly, or  |
+        |  cause other issues.                                               |
+        |                                                                    |
+        |  Please run this script as a regular user (sudo will be used       |
+        |  automatically when needed).                                       |
+        +--------------------------------------------------------------------+
+        """)
+        exit(1)
+
+    # warning for user
+    r = input("""
+    +--------------------------------------------------------------------+
+    |                              WARNING                               |
+    +--------------------------------------------------------------------+
+    |  This version of the installation script does NOT support systems  |
+    |  like NixOS or Garuda Linux. It only supports Arch Linux in this   |
+    |  version.                                                          |
+    |                                                                    |
+    |  If your system is not supported by this version of the script,    |
+    |  nothing will work — or worse, it may break your system.           |
+    |                                                                    |
+    |  So, Do you want to continue the installation?                     |
+    +--------------------------------------------------------------------+
+    """)
+    continue if "y" in r.lower() else sys.exit(1)
+
     # installing AUR
     result = subprocess.run("which yay",
                             shell=True,
@@ -140,11 +185,10 @@ def main():
         install_aur()
 
     install_pkg()
-    install_configs()
-    zsh_answer = input("Do you want to install zsh with ohmyzsh?")
-    is_needed_zsh = True if "y" in zsh_answer else False
-    if (is_needed_zsh):
-        install_zsh()
+    load_configs()
+    r = input("Do you want to install zsh with ohmyzsh?")
+
+    install_zsh() if "y" in r.lower()
 
 if __name__ == "__main__":
     main()
